@@ -4,10 +4,10 @@
 get_path(Path, Entity) ->
     get_elem(Path, Entity, []).
 
-get_elem([], [], []) -> not_found;
-get_elem([], [], Acc) -> lists:reverse(Acc);
-get_elem(_Path, [], []) -> not_found;
-get_elem(_Path, [], Acc) -> lists:reverse(Acc);
+get_elem([], [], []) -> {error, not_found};
+get_elem([], [], Acc) -> {ok, lists:reverse(Acc)};
+get_elem(_Path, [], []) -> {error, not_found};
+get_elem(_Path, [], Acc) -> {ok, lists:reverse(Acc)};
 
 get_elem([Br|T], {Br, _, Rest}, Acc) ->
     get_elem(T, Rest, Acc);
