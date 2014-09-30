@@ -156,8 +156,6 @@ unescape(Bin) ->
             <<Unescaped/binary, $>, (unescape(Rest))/binary>>;
         {Unescaped, <<"amp;",  Rest/binary>>} ->
             <<Unescaped/binary, $&, (unescape(Rest))/binary>>;
-        {Unescaped, <<"#32;", Rest/binary>>} ->
-            <<Unescaped/binary, $ , (unescape(Rest))/binary>>;
         {Unescaped, <<"#33;", Rest/binary>>} ->
             <<Unescaped/binary, $!, (unescape(Rest))/binary>>;
         {Unescaped, <<"#34;", Rest/binary>>} ->
@@ -222,53 +220,55 @@ unescape(Bin) ->
             <<Unescaped/binary, $}, (unescape(Rest))/binary>>;
         {Unescaped, <<"#126;", Rest/binary>>} ->
             <<Unescaped/binary, $~, (unescape(Rest))/binary>>;
+        {Unescaped, <<"#127;", Rest/binary>>} ->
+            <<Unescaped/binary, $␡, (unescape(Rest))/binary>>;
         {Unescaped, <<"#161;", Rest/binary>>} ->
-            <<Unescaped/binary, $¡, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¡"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#162;", Rest/binary>>} ->
-            <<Unescaped/binary, $¢, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¢"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#163;", Rest/binary>>} ->
-            <<Unescaped/binary, $£, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"£"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#164;", Rest/binary>>} ->
-            <<Unescaped/binary, $¤, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¤"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#165;", Rest/binary>>} ->
-            <<Unescaped/binary, $¥, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¥"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#166;", Rest/binary>>} ->
-            <<Unescaped/binary, $¦, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¦"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#167;", Rest/binary>>} ->
-            <<Unescaped/binary, $§, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"§"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#168;", Rest/binary>>} ->
-            <<Unescaped/binary, $¨, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¨"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#169;", Rest/binary>>} ->
-            <<Unescaped/binary, $©, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"©"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#170;", Rest/binary>>} ->
-            <<Unescaped/binary, $ª, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"ª"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#171;", Rest/binary>>} ->
-            <<Unescaped/binary, $«, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"«"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#172;", Rest/binary>>} ->
-            <<Unescaped/binary, $¬, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¬"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#174;", Rest/binary>>} ->
-            <<Unescaped/binary, $®, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"®"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#175;", Rest/binary>>} ->
-            <<Unescaped/binary, $¯, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¯"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#176;", Rest/binary>>} ->
-            <<Unescaped/binary, $°, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"°"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#177;", Rest/binary>>} ->
-            <<Unescaped/binary, $±, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"±"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#178;", Rest/binary>>} ->
-            <<Unescaped/binary, $², (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"²"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#179;", Rest/binary>>} ->
-            <<Unescaped/binary, $³, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"³"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#180;", Rest/binary>>} ->
-            <<Unescaped/binary, $´, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"´"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#181;", Rest/binary>>} ->
-            <<Unescaped/binary, $µ, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"µ"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#182;", Rest/binary>>} ->
-            <<Unescaped/binary, $¶, (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"¶"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#187;", Rest/binary>>} ->
-            <<Unescaped/binary, $», (unescape(Rest))/binary>>;
+            <<Unescaped/binary, <<"»"/utf8>>/binary, (unescape(Rest))/binary>>;
         {Unescaped, <<"#8211;", Rest/binary>>} ->
-            <<Unescaped/binary, $-, (unescape(Rest))/binary>>;
-        {Unescaped, <<_, Rest/binary>>} -> %% Any skip
+            <<Unescaped/binary, <<"-">>/binary, (unescape(Rest))/binary>>;
+        {Unescaped, <<_, Rest/binary>>} -> %% Any set this
             <<Unescaped/binary, $ , (unescape(Rest))/binary>>
     end.
 
